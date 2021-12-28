@@ -1,0 +1,17 @@
+version: "2"
+services:
+  gogs:
+    image: gogs/gogs:latest
+    container_name: gogs
+    ports:
+      - 22:22
+      - 3000:3000
+    volumes:
+      - /mnt/docker/gogs/gogs:/data
+    networks:
+      - my_sec_net
+    restart: unless-stopped
+
+networks:
+  my_sec_net:
+    external: true
