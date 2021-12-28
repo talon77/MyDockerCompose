@@ -1,0 +1,15 @@
+version: "2.0"
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    user: root:root
+    #network_mode: "host"
+    ports:
+      - "8096:8096"
+    volumes:
+      - /mnt/docker/jellyfin/config:/config
+      - /mnt/docker/jellyfin/cache:/cache
+      - /mnt/docker/jellyfin/media:/media
+      - /mnt/docker/jellyfin/media2:/media2:ro
+    restart: "unless-stopped"
