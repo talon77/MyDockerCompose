@@ -1,0 +1,21 @@
+version: "2"
+services:
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 67:67/udp
+      - 80:80/tcp
+    environment:
+      TZ: America/Vancouver
+      WEBPASSWORD: "Password"
+    volumes:
+      - /mnt/docker/pihole2/etc-pihole:/etc/pihole/
+      #- $(pwd)/etc-pihole:/etc/pihole/
+      - /mnt/docker/pihole2/etc-dnsmasq.d:/etc/dnsmasq.d/
+      #- $(pwd)/etc-dnsmasq.d:/etc/dnsmasq.d/
+    dns: 127.0.0.1
+    dns: 192.168.2.1
+    restart: unless-stopped
