@@ -1,0 +1,16 @@
+version: "2"
+services:
+  openbooks:
+    image: evanbuss/openbooks:latest
+    container_name: openbooks
+#    ports:
+#      - "80:80"
+    volumes:
+      - "/mnt/docker/openbooks/booksVolume:/books"
+    networks:
+      - my_sec_net
+    restart: "unless-stopped"
+
+networks:
+  my_sec_net:
+    external: true
